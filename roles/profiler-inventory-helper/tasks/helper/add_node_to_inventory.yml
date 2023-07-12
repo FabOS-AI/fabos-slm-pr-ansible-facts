@@ -27,6 +27,7 @@
 - name: Setup ansible inventory
   ansible.builtin.add_host:
     name: "{{ ip_address }}"
+    ansible_hostname: "{{ item.Node }}"
     groups: target_host
     ansible_connection: ssh
     ansible_port: "{{ remote_access_service.Port | default(22, true) }}"
