@@ -1,0 +1,21 @@
+---
+# defaults file for ansible-facts
+aas:
+  idShort: "{{ ansible_hostname }}"
+  identification:
+    id: "{{ aas_id }}"
+    idType: Custom
+  asset:
+    modelType:
+      name: Asset
+    kind: "Instance"
+    idShort: "{{ ansible_hostname }}"
+    identification:
+      id: ""
+      idType: IRDI
+
+aas_submodel:
+  identification:
+    idType: Custom
+    id: "ansible-facts-{{ aas_id }}"
+  idShort: ansible-facts

@@ -1,0 +1,69 @@
+---
+# tasks file for ansible-facts
+- name: Check input parameter
+  ansible.builtin.assert:
+    that:
+      - (aas_id is defined) and (aas_id | length > 0)
+
+- name: Create AAS
+  ansible.builtin.uri:
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}"
+    method: PUT
+    headers:
+      Content-Type: application/json
+    body_format: json
+    body: "{{ aas }}"
+  register: create_aas_request
+  until: not create_aas_request.failed
+
+- name: Collection facts
+  ansible.builtin.setup:
+
+- name: Create Ansible Facts Submodel
+  ansible.builtin.uri:
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}"
+    method: PUT
+    headers:
+      Content-Type: application/json
+    body_format: json
+    body: "{{ aas_submodel }}"
+
+- name: Create Ansible Facts Submodel Element - Strings
+  ansible.builtin.uri:
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key }}"
+    method: PUT
+    headers:
+      Content-Type: application/json
+    body_format: json
+    body:
+      idShort: "{{ item.key }}"
+      modelType:
+        name: "Property"
+      valueType: "string"
+      value: "{{ item.value | string }}"
+  when:
+    - item.value is string
+  loop: "{{ ansible_facts | dict2items }}"
+
+- name: Create Ansible Facts Submodel Element - Arrays
+  ansible.builtin.uri:
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key }}"
+    method: PUT
+    headers:
+      Content-Type: application/json
+    body_format: json
+    body:
+      idShort: "{{ item.key }}"
+      valueType: "anyType"
+      value: "{{ item.value | string }}"
+  when:
+    - item.value is not string
+    - item.value is iterable
+    - item.value is not mapping
+  loop: "{{ ansible_facts | dict2items }}"
+
+- name: Include - Create Submodel Element Collections
+  ansible.builtin.include_tasks: helper/register_submodel_element_collection.yml
+  when:
+    - item.value is mapping
+  loop: "{{ ansible_facts | dict2items }}"

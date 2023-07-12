@@ -1,0 +1,16 @@
+---
+roles:
+  - src: "git+https://github.com/eclipse-slm/molecule_vsphere"
+    scm: git
+    version: main
+    name: molecule_vsphere
+
+  - src: "git+https://github.com/eclipse-slm/slm-ansible-role-basyx-server"
+    scm: git
+    version: main
+    name: basyx_server
+
+  - src: "git+https://github.com/FabOS-AI/fabos-slm-inventory-helper.git"
+    scm: git
+    version: main
+    name: inventory_helper
