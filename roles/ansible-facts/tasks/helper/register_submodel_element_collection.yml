@@ -6,7 +6,7 @@
 
 - name: Fill "value" property of Submodel Element Collection
   ansible.builtin.set_fact:
-    value: "{{ value + [ {'idShort': entry.key, 'valueType': 'string', 'value': entry.value} ] }}"
+    value: "{{ value + [ {'idShort': (entry.key | replace('.', '')), 'valueType': 'string', 'value': entry.value} ] }}"
   loop: "{{ item.value | dict2items }}"
   loop_control:
     loop_var: entry
@@ -14,7 +14,7 @@
 - name: Set Submodel Element Collection
   ansible.builtin.set_fact:
     submodel_element_collection:
-      idShort: "{{ item.key }}"
+      idShort: "{{ item.key | replace('.', '') }}"
       modelType:
         name: SubmodelElementCollection
       value: "{{ value }}"
