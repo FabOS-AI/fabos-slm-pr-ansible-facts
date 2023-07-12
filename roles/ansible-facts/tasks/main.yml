@@ -28,6 +28,7 @@
       Content-Type: application/json
     body_format: json
     body: "{{ aas_submodel }}"
+  delegate_to: localhost
 
 - name: Create Ansible Facts Submodel Element - Strings
   ansible.builtin.uri:
@@ -45,6 +46,7 @@
   when:
     - item.value is string
   loop: "{{ ansible_facts | dict2items }}"
+  delegate_to: localhost
 
 - name: Create Ansible Facts Submodel Element - Arrays
   ansible.builtin.uri:
@@ -62,6 +64,7 @@
     - item.value is iterable
     - item.value is not mapping
   loop: "{{ ansible_facts | dict2items }}"
+  delegate_to: localhost
 
 - name: Include - Create Submodel Element Collections
   ansible.builtin.include_tasks: helper/register_submodel_element_collection.yml

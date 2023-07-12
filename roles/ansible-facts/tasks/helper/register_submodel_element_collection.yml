@@ -27,3 +27,4 @@
       Content-Type: application/json
     body_format: json
     body: "{{ submodel_element_collection }}"
+  delegate_to: localhost
