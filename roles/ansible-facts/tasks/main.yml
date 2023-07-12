@@ -14,7 +14,7 @@
     body_format: json
     body: "{{ aas }}"
   register: create_aas_request
-  when: "{{ force_create_ass | default(false) }}"
+  when: force_create_ass | default(false)
   until: not create_aas_request.failed
 
 - name: Collection facts
