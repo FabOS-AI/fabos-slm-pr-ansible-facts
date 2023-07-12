@@ -14,7 +14,7 @@
 
 - name: Set RemoteAccessService
   ansible.builtin.set_fact:
-    remote_access_service: "{{ output_get_node_services.json | first | default('') }}"
+    remote_access_service: "{{ output_get_node_services.json.Services | first | default('') }}"
 
 - name: Set resource credentials
   ansible.builtin.set_fact:
