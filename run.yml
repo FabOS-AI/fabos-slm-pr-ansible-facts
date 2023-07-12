@@ -8,20 +8,21 @@
       ansible.builtin.include_role:
         name: profiler-inventory-helper
 
-#- name: Run ansible-facts profiler
-#  hosts: ssh
-#  gather_facts: no
-#  become: yes
-#  tasks:
-#    - name: Assert input parameter
-#      ansible.builtin.assert:
-#        that:
-#          - (resource_id is defined) and (resource_id | length > 0)
-#
-#    - name: Set aas_id
-#      ansible.builtin.set_fact:
-#        aas_id: "{{ resource_id }}"
-#
-#    - name: "Include ansible-facts"
-#      ansible.builtin.include_role:
-#        name: "ansible-facts"
+- name: Run ansible-facts profiler
+  hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Assert input parameter
+      ansible.builtin.assert:
+        that:
+          - (resource_id is defined) and (resource_id | length > 0)
+          - (aas_server_base_url is defined) and (aas_server_base_url | length > 0)
+
+    - name: Set aas_id
+      ansible.builtin.set_fact:
+        aas_id: "{{ resource_id }}"
+
+    - name: "Include ansible-facts"
+      ansible.builtin.include_role:
+        name: "ansible-facts"
