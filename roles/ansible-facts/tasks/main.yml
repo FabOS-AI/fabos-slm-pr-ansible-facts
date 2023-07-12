@@ -38,7 +38,7 @@
       Content-Type: application/json
     body_format: json
     body:
-      idShort: "{{ item.key }}"
+      idShort: "{{ item.key | replace('.', '') }}"
       modelType:
         name: "Property"
       valueType: "string"
@@ -56,7 +56,7 @@
       Content-Type: application/json
     body_format: json
     body:
-      idShort: "{{ item.key }}"
+      idShort: "{{ item.key | replace('.', '') }}"
       valueType: "anyType"
       value: "{{ item.value | string }}"
   when:
