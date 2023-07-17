@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  aas-registry:
+    image: eclipsebasyx/aas-registry:1.4.0
+    restart: always
+    ports:
+      - "4000:4000"
