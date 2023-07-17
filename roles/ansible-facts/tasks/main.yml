@@ -73,5 +73,5 @@
   loop: "{{ ansible_facts | dict2items }}"
 
 # Only required if server does not register submodel automatically:
-#- name: Register submodel at registry
-#  ansible.builtin.include_tasks: helper/register_submodel_registry.yml
+- name: Register submodel descriptor at registry
+  ansible.builtin.include_tasks: helper/register_submodel_registry.yml
