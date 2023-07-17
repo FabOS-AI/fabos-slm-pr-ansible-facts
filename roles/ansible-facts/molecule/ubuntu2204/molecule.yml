@@ -7,7 +7,10 @@ platforms:
 #  UBUNTU:
   - name: ubuntu2204
     template_name: ubuntu-22-04
-    groups: ['ssh']
+    groups: ['ssh', 'aas_server']
+  - name: aas-registry
+    template_name: ubuntu-22-04-docker
+    groups: ['aas_registry']
 provisioner:
   name: ansible
   playbooks:
