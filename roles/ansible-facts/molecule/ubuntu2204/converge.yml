@@ -1,6 +1,6 @@
 ---
 - name: Converge
-  hosts: all
+  hosts: ssh
   gather_facts: yes
   become: no
   tasks:
