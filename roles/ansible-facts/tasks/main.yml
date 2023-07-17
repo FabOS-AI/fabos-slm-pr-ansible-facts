@@ -32,7 +32,7 @@
 
 - name: Create Ansible Facts Submodel Element - Strings
   ansible.builtin.uri:
-    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key }}"
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key | replace('.', '') }}"
     method: PUT
     headers:
       Content-Type: application/json
@@ -50,7 +50,7 @@
 
 - name: Create Ansible Facts Submodel Element - Arrays
   ansible.builtin.uri:
-    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key }}"
+    url: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{aas_submodel.idShort}}/submodel/submodelElements/{{ item.key | replace('.', '') }}"
     method: PUT
     headers:
       Content-Type: application/json
