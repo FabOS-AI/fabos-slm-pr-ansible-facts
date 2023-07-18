@@ -4,9 +4,13 @@
   gather_facts: yes
   become: yes
   tasks:
+    - name: Include vars
+      ansible.builtin.include_vars:
+        file: vars.yml
+
     - name: Lookup compose file
       ansible.builtin.set_fact:
-        docker_compose_definition: "{{ lookup('file', 'docker-compose.yml') | from_yaml }}"
+        docker_compose_definition: "{{ lookup('template', 'docker-compose.yml') | from_yaml }}"
 
     - name: Docker compose up
       community.docker.docker_compose:
