@@ -6,3 +6,16 @@ services:
     restart: always
     ports:
       - "4000:4000"
+    environment:
+      basyxcontext_accesscontrolalloworigin: "*"
+
+  aas-gui:
+    image: eclipsebasyx/aas-gui:v230703
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_REGISTRY_PATH: "{{ aas_registry_base_url }}"
+      VITE_AAS_SERVER_PATH: "{{ aas_server_base_url }}"
+      VITE_PRIMARY_COLOR: "00A0E3"
+
