@@ -57,6 +57,8 @@
     body_format: json
     body:
       idShort: "{{ item.key | replace('.', '') }}"
+      modelType:
+        name: "Property"
       valueType: "anyType"
       value: "{{ item.value | string }}"
   when:
