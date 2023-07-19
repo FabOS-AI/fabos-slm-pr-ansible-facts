@@ -37,6 +37,7 @@ aas_submodel_descriptor:
   endpoints:
     - type: http
       address: "{{ aas_server_base_url }}/shells/{{ aas_id }}/aas/submodels/{{ aas_submodel.idShort }}/submodel"
+  semanticId: "{{ aas_submodel.semanticId }}"
 
 aas:
   modelType:
@@ -70,3 +71,9 @@ aas_submodel:
   modelType:
     name: Submodel
   kind: Instance
+  semanticId:
+    keys:
+      - type: ConceptDescription
+        idType: IRI
+        value: "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html"
+        local: false
