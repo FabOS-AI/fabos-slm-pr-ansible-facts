@@ -75,5 +75,5 @@ aas_submodel:
     keys:
       - type: ConceptDescription
         idType: IRI
-        value: "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html"
+        value: "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#ansible-facts"
         local: false
