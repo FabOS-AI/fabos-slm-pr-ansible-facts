@@ -49,7 +49,7 @@ DELETE http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/regist
 GET http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/registry/{{aas_id}}/submodels
 
 ### GET /<aasId>/submodels/<submodelId> - Get one Submodel of AAS
-GET http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/registry/{{aas_id}}/submodels/ansible-facts
+GET http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/registry/{{aas_id}}/submodels/PlatformResources-144a1a7c-d6c6-4a45-9448-414678bbcf25
 
 ### PUT /<aasId>/submodels/<submodelId> - Add one SubmodelDescriptor to AAS
 PUT http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/registry/{{aas_id}}/submodels/ansible-facts
@@ -58,3 +58,6 @@ Content-Type: application/json
 {
 
 }
+
+### DELETE /<aasId>/submodels/<submodelId> - Delete one Submodel of AAS
+DELETE http://{{ass_registry_host}}:{{ass_registry_port}}/registry/api/v1/registry/{{aas_id}}/submodels/PlatformResources-144a1a7c-d6c6-4a45-9448-414678bbcf25
