@@ -18,17 +18,17 @@
         definition: "{{ docker_compose_definition }}"
 
 
-- name: Prepare AAS-Server
-  hosts: aas_server
-  gather_facts: yes
-  become: yes
-  tasks:
-    - name: "Include basyx_server - state = present"
-      ansible.builtin.include_role:
-        name: "basyx_server"
-
-    - name: Include vars
-      ansible.builtin.include_vars:
-        file: vars.yml
+#- name: Prepare AAS-Server
+#  hosts: aas_server
+#  gather_facts: yes
+#  become: yes
+#  tasks:
+#    - name: "Include basyx_server - state = present"
+#      ansible.builtin.include_role:
+#        name: "basyx_server"
+#
+#    - name: Include vars
+#      ansible.builtin.include_vars:
+#        file: vars.yml
 
 
