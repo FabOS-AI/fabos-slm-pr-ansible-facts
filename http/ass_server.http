@@ -25,11 +25,11 @@ Content-Type: application/json
 GET http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/test1234
 Content-Type: application/json
 
-### DELETE /shells/<id> Get AAS
+### DELETE /shells/<id>
 DELETE http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/{{aas_id}}
 
-### PUT /shells/<id>/aas Register Submodel
-PUT http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/test1234/aas/submodels/submodel-id-short
+### PUT /shells/<id>/aas/submodels/<sm-id-short>
+PUT http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/{{aas_id}}/aas/submodels/submodel-id-short
 Content-Type: application/json
 
 {
@@ -40,8 +40,11 @@ Content-Type: application/json
   "idShort": "submodel-id-short"
 }
 
-### DELETE /shells/<id>/aas Register Submodel
-DELETE http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/test1234/aas/submodels/submodel-id-short
+### DELETE /shells/<id>
+DELETE http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/{{aas_id}}
+
+### DELETE /shells/<id>/aas/submodels/<id-short>
+DELETE http://{{ass_server_host}}:{{ass_server_port}}/aasServer/shells/{{aas_id}}/aas/submodels/PlatformResources
 
 
 ### PUT /shells/{id}/aas/submodels/{id}/submodel/submodelElements/{seIdShortPath}
