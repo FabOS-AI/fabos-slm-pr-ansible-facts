@@ -77,3 +77,9 @@ aas_submodel:
         idType: IRI
         value: "https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#ansible-facts"
         local: false
+  parent:
+    keys:
+      - type: AssetAdministrationShell
+        local: true
+        value: "{{ aas_id }}"
+        idType: Custom
