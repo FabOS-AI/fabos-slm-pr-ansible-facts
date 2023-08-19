@@ -83,3 +83,6 @@ aas_submodel:
         local: true
         value: "{{ aas_id }}"
         idType: Custom
+  submodelElements: "{{ aas_submodel_elements }}"
+
+aas_submodel_elements: []
